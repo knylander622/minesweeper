@@ -1,23 +1,20 @@
+#include "board.h"
 #include <iostream>
-#include <vector>
 using namespace std;
-struct Cell
-{
-    bool mine;
-    bool revealed;
-    bool flagged;
-    int surroundingMines;
-
-    Cell(bool m, bool r, bool f, int sM)
-    {
-        mine = m;
-        revealed = f;
-        flagged = f;
-        surroundingMines = sM;
-    }
-};
-
 int main()
 {
- vector<vector<Cell>> board;
+int rows, cols, mines;
+vector<vector<Cell>> board;
+ 
+cout << "Enter dimensions and mines" << endl;
+cin >> rows >> cols >> mines;
+
+while(rows * cols < mines)
+{
+    cout << "Error: Mines exceed total squares. Try again please." << endl;
+    cin >> rows >> cols >> mines;
+}
+
+playGame(rows, cols, mines, board);
+
 }
